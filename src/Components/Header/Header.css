@@ -1,0 +1,32 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, #222222, #111111);
+  color: #f0f0f0;
+  padding: 0 2rem;
+}
+
+.logo-container {
+}
+.logo {
+  width: 110px;
+}
+
+.nav-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 4rem;
+}
+
+.nav-items > ul {
+  display: flex;
+  list-style: none;
+}
+
+.nav-items > ul > li {
+  margin: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}

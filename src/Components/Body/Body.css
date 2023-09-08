@@ -1,0 +1,16 @@
+.body{
+    /* background: linear-gradient(to bottom, #f0f0f0, #f2f2f2); */
+    /* color: #333333; */
+    background: linear-gradient(to bottom, #333333, #444444);
+    color: #f0f0f0;
+}
+
+
+.res-container{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: 0 auto;
+    row-gap:20px ;
+}
