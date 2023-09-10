@@ -9,6 +9,7 @@
 
 .logo-container {
 }
+
 .logo {
   width: 110px;
 }
@@ -29,4 +30,19 @@
   margin: 1rem;
   font-size: 1.1rem;
   font-weight: 600;
+}
+
+.nav-items > ul > li > a {
+  color: #f0f0f0; /* Change the color of the links */
+  text-decoration: none; /* Remove the underline from the links */
+}
+
+.nav-items > ul > li > a:hover {
+  color: #ff6347; /* Change the color of the links when hovered */
+}
+
+button {
+  background-color: #ff6347; /* Change the background color of the button */
+  color: #f0f0f0; /* Change the text color of the button */
+  border-radius: 5px; /* Add rounded corners to the button */
 }

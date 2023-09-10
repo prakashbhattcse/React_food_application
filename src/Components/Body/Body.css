@@ -2,15 +2,24 @@
   /* background: linear-gradient(to bottom, #f0f0f0, #f2f2f2); */
   /* color: #333333; */
   background: linear-gradient(to bottom, #333333, #444444);
-  color: #f0f0f0;
-  width: 90%;
-  margin: 0 auto;
+
   display: flex;
   justify-content: center;
   /* align-items: center; */
   flex-direction: column;
+
+}
+
+
+
+
+.body-layout{
+  color: #f0f0f0;
+  width: 90%;
+  margin: 0 auto;
   margin-top: 2rem;
 }
+
 
 .res-container {
   display: flex;
