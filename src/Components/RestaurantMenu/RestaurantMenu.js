@@ -63,6 +63,7 @@ const RestaurantMenu = () => {
                         {item.card.info.name || "hell"} - {" "}
                         {item.card.info.price / 100}
                         {/* <img src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208${item.card.info.imageId}}`} alt={item.card.info.name} /> */}
+                        {/* <img src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208${item.card.info.imageId}}`} alt={item.card.info.name} /> */}
                     </li>
 
                 ))}
