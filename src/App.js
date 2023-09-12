@@ -1,10 +1,3 @@
-// import React from 'react';
-// import './App.css';
-// import Body from './Components/Body/Body';
-// import Header from './Components/Header/Header';
-// import About from './Components/About/About ';
-// import Error from './Components/Error';
-// import Contact from './Components/Contact/Contact';
 // import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
@@ -43,6 +36,7 @@ import About from './Components/About/About ';
 import Error from './Components/Error';
 import Contact from './Components/Contact/Contact';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
+import RestaurantMenu from './Components/RestaurantMenu/RestaurantMenu';
 
 const App = () => {
   return (
@@ -70,6 +64,10 @@ const Root = () => {
         {
           path: "/",
           element: <Body />,
+        },
+        {
+          path: "/restaurants/:resId",
+          element: <RestaurantMenu/>,
         },
       ],
       errorElement: <Error />

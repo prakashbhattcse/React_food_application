@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ResCard from '../ReastaurentCard/ResCard'
 import "./Body.css";
 import Shimmer from '../Shimmer/Shimmer';
-
+import { Link } from 'react-router-dom';
 
 
 const Body = () => {
@@ -27,10 +27,13 @@ const Body = () => {
             // console.log(json);
 
             const restaurants = json.data.cards.slice(3).map(card => card.card?.card);
+            // const restaurants = json. data.cards[3].card.card.info;
+           
             setlistOfRestaurants(restaurants);
             setFilterdlistOfRestaurants(restaurants);
             setLoading(false);
             //   setlistOfRestaurants(json.cards[5].card.card.gridElements.infoWithStyle.restaurants)
+           
         } catch (error) {
             console.log(error);
         }
@@ -61,7 +64,8 @@ const Body = () => {
 
                 <div className="res-container">
                     {filterdlistOfRestaurants.map((restaurant, i) => (
-                        <ResCard key={i} resData={restaurant} />
+                     <Link key={restaurant.info.id} to={"/restaurants/"+ restaurant.info.id}>   <ResCard  resData={restaurant} /></Link>
+                        
                     ))}
                 </div>
             </div>
