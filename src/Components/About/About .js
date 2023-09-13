@@ -1,9 +1,16 @@
 import React from 'react'
+import UserFcn from '../UserFcn'
+import UserClass from '../UserClass'
+
 
 const About = () => {
   return (
     <div className='layout'>
-      <h1>About</h1>
+
+      <div className="aboutCard">
+        <UserFcn name="amit"/>
+        <UserClass name="amit"/>
+      </div>
     </div>
   )
 }
