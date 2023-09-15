@@ -37,6 +37,8 @@ import Error from './Components/Error';
 import Contact from './Components/Contact/Contact';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import RestaurantMenu from './Components/RestaurantMenu/RestaurantMenu';
+import ReactLifeCycle from "../src/Components/ReactLifeCycle"
+
 
 const App = () => {
   return (
@@ -68,6 +70,10 @@ const Root = () => {
         {
           path: "/restaurants/:resId",
           element: <RestaurantMenu/>,
+        },
+        {
+          path: "/reactlifecycle",
+          element: <ReactLifeCycle/>,
         },
       ],
       errorElement: <Error />

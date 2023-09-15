@@ -23,6 +23,9 @@ const Header = () => {
                     <li>
                         <Link to="/Contact">Contact Us</Link>
                     </li>
+                    <li>
+                        <Link to="/reactlifecycle">React Life Cycle</Link>
+                    </li>
                     {/* <li>Cart</li> */}
                     <button className='login_btn' onClick={() => { setLogin(!login) }}>{login ? "Login" : "Logout"}</button>
                 </ul>
