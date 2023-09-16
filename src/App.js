@@ -28,17 +28,19 @@
 
 
 
-import React from 'react';
+import React, { Suspense, lazy } from 'react'
 import './App.css';
 import Body from './Components/Body/Body';
 import Header from './Components/Header/Header';
-import About from './Components/About/About ';
+// import About from './Components/About/About ';
 import Error from './Components/Error';
 import Contact from './Components/Contact/Contact';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import RestaurantMenu from './Components/RestaurantMenu/RestaurantMenu';
 import ReactLifeCycle from "../src/Components/ReactLifeCycle"
 
+
+const About = lazy(() => import('./Components/About/About '));
 
 const App = () => {
   return (
@@ -57,7 +59,7 @@ const Root = () => {
       children: [
         {
           path: "/about",
-          element: <About />,
+          element:  <Suspense fallback={<h1>LOADING</h1>}><About /></Suspense>,
         },
         {
           path: "/contact",
@@ -65,15 +67,15 @@ const Root = () => {
         },
         {
           path: "/",
-          element: <Body />,
+          element:<Body />,
         },
         {
           path: "/restaurants/:resId",
-          element: <RestaurantMenu/>,
+          element: <RestaurantMenu />,
         },
         {
           path: "/reactlifecycle",
-          element: <ReactLifeCycle/>,
+          element: <ReactLifeCycle />,
         },
       ],
       errorElement: <Error />

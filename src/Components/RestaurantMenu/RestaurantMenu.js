@@ -1,9 +1,7 @@
 import React from 'react'
-import { useState, useEffect } from 'react';
 import "./RestaurantMenu.css";
 import Shimmer from '../Shimmer/Shimmer';
 import { useParams } from 'react-router';
-import { MENU_API } from '../../utils/constants';
 import useRestaurantMenu from '../../utils/useRestaurantMenu';
 
 const RestaurantMenu = () => {
