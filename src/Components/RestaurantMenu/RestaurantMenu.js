@@ -4,27 +4,28 @@ import "./RestaurantMenu.css";
 import Shimmer from '../Shimmer/Shimmer';
 import { useParams } from 'react-router';
 import { MENU_API } from '../../utils/constants';
+import useRestaurantMenu from '../../utils/useRestaurantMenu';
 
 const RestaurantMenu = () => {
 
     const { resId } = useParams();
-    const [resinfo, setResinfo] = useState(null);
-    const [loading, setLoading] = useState(true);
+   
 
-    useEffect(() => {
-        fetchMenu();
-    }, []);
+    const { resInfo, loading } = useRestaurantMenu(resId);
+    // useEffect(() => {
+    //     fetchMenu();
+    // }, []);
 
 
 
-    const fetchMenu = async () => {
-        const data = await fetch(MENU_API + resId);
+    // const fetchMenu = async () => {
+    //     const data = await fetch(MENU_API + resId);
 
-        const json = await data.json();
-        console.log(json)
-        setResinfo(json.data);
-        setLoading(false);
-    }
+    //     const json = await data.json();
+    //     console.log(json)
+    //     setResinfo(json.data);
+    //     setLoading(false);
+    // }
 
 
     // ### 2 > Sometimes code works but when i reload the page it shows me errors
@@ -34,13 +35,14 @@ const RestaurantMenu = () => {
     // To handle this, you can add a loading state to your component.
 
 
+
     if (loading) {
         return <Shimmer />;
     }
 
-    const { name, costForTwo, cuisines, city, cloudinaryImageId } = resinfo?.cards[0]?.card?.card?.info || {};
+    const { name, costForTwo, cuisines, city, cloudinaryImageId } = resInfo?.cards[0]?.card?.card?.info || {};
 
-    const { itemCards } = resinfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card || {};
+    const { itemCards } = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card || {};
 
 
     return (
