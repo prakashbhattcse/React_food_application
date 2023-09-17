@@ -7,7 +7,7 @@ import useRestaurantMenu from '../../utils/useRestaurantMenu';
 const RestaurantMenu = () => {
 
     const { resId } = useParams();
-   
+
 
     const { resInfo, loading } = useRestaurantMenu(resId);
     // useEffect(() => {
@@ -41,8 +41,17 @@ const RestaurantMenu = () => {
     const { name, costForTwo, cuisines, city, cloudinaryImageId } = resInfo?.cards[0]?.card?.card?.info || {};
 
     const { itemCards } = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card || {};
+    // const { itemCards } = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c=> c.card?.card?.["@type"]== "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory" || {};
+    console.log(resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards)
 
 
+    const categories = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.
+        cards.filter(c =>
+            c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory" ||
+            c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory"
+        )
+
+    console.log(categories)
     return (
         <>
 
@@ -58,14 +67,23 @@ const RestaurantMenu = () => {
             renders before the data is fetched. So during the first render, `itemCards` is 
             `undefined`, and trying to call `map` on it results in an error. */}
 
-                {itemCards.map((item) => (
+
+                <ul>
+
+                    {categories.map((cat) => (
+                        <li>
+                            {cat.card?.card?.title}
+                        </li>
+                    ))}
+
+                </ul>
+
+                {/* {itemCards.map((item) => (
                     <li>
                         {item.card.info.name || "hell"} - {" "}
                         {item.card.info.price / 100}
-                        {/* <img src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208${item.card.info.imageId}}`} alt={item.card.info.name} /> */}
                     </li>
-
-                ))}
+                ))} */}
             </ul>
 
         </>

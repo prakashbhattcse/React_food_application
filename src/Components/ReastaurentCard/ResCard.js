@@ -13,7 +13,7 @@ const ResCard = (props) => {
         avgRating,
         cuisines,
         costForTwo,
-        sla,
+        sla,id,promoted
     } = info;
 
     const { deliveryTime } = sla;
@@ -36,4 +36,18 @@ const ResCard = (props) => {
     )
 }
 
+
+
+export const withPrmotedLabel = (ResCard)=>{
+    return(props)=>{
+        return (
+            <>
+                <div className="">
+                    <label>Promoted</label>
+                    <ResCard {...props}/>
+                </div>
+            </>
+        )
+    }
+}
 export default ResCard
