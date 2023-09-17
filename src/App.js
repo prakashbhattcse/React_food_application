@@ -36,7 +36,7 @@ import Header from './Components/Header/Header';
 import Error from './Components/Error';
 import Contact from './Components/Contact/Contact';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
-import RestaurantMenu from './Components/RestaurantMenu/RestaurantMenu';
+import RestaurantMenu from './Components/RestaurantMenu';
 import ReactLifeCycle from "../src/Components/ReactLifeCycle"
 
 

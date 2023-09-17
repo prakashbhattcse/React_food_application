@@ -1,8 +1,10 @@
 import React from 'react'
-import "./RestaurantMenu.css";
-import Shimmer from '../Shimmer/Shimmer';
+import Shimmer from './Shimmer/Shimmer';
 import { useParams } from 'react-router';
-import useRestaurantMenu from '../../utils/useRestaurantMenu';
+import useRestaurantMenu from '../utils/useRestaurantMenu';
+import RestaurantCategory from './RestaurantCategory';
+import ItemList from './ItemList';
+
 
 const RestaurantMenu = () => {
 
@@ -41,42 +43,42 @@ const RestaurantMenu = () => {
     const { name, costForTwo, cuisines, city, cloudinaryImageId } = resInfo?.cards[0]?.card?.card?.info || {};
 
     const { itemCards } = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card || {};
-    // const { itemCards } = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c=> c.card?.card?.["@type"]== "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory" || {};
-    console.log(resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards)
+
+    // console.log(resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards)
 
 
+
+    // here if i want to cover all categores and nested categories i need to comapre for both of them
     const categories = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.
         cards.filter(c =>
             c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory" ||
             c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory"
         )
-
     console.log(categories)
+
     return (
         <>
 
-            <h1>{name}</h1>
-            <h3>{costForTwo}</h3>
-            <h3>{cuisines}</h3>
-            <h3>{city}</h3>
-            <img src="cloudinaryImageId" alt="" />
-            <h1>Menu</h1>
-            <ul>
+            <div className="flex justify-center text-center w-6/12 m-auto flex-col">
                 {/* // ## itemCards` was `undefined` during the first render of the component. 
             This happened because data fetching is asynchronous, which means that the component 
             renders before the data is fetched. So during the first render, `itemCards` is 
             `undefined`, and trying to call `map` on it results in an error. */}
 
+                <div className="">
+                    <h1 className="font-semibold text-2xl">{name}</h1>
+                    <p className="">{cuisines.join(", ")}</p>
+                    <h1 className="">hello</h1>
+                </div>
 
-                <ul>
-
-                    {categories.map((cat) => (
-                        <li>
-                            {cat.card?.card?.title}
-                        </li>
+                <div className="">
+                    {categories.map((category) => (
+                        <RestaurantCategory data={category.card?.card} />
                     ))}
-
-                </ul>
+                    {/* {categories.map((category) => (
+                        <ItemList data={category.card?.card.itemCards?.card} />
+                    ))} */}
+                </div>
 
                 {/* {itemCards.map((item) => (
                     <li>
@@ -84,8 +86,8 @@ const RestaurantMenu = () => {
                         {item.card.info.price / 100}
                     </li>
                 ))} */}
-            </ul>
 
+            </div>
         </>
     )
 }
