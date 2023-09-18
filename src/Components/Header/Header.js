@@ -1,12 +1,15 @@
-import React, { useState, Suspense, lazy } from 'react'
+import React, { useState, Suspense, lazy,useContext } from 'react'
 import "./Header.css"
 import { LOGO_URL } from '../../utils/constants'
 import { Link } from 'react-router-dom'
 import useOnlineStatus from '../../utils/useOnlineStatus'
+import userContext from '../../utils/UserContext'
 
 const Header = () => {
 
     const [login, setLogin] = useState(false)
+
+    const {loggedInUser} = useContext(userContext);
 
     const onlineStatus = useOnlineStatus();
     return (
@@ -32,6 +35,8 @@ const Header = () => {
                 <li>
                     <Link to="/reactlifecycle">React Life Cycle</Link>
                 </li>
+                <li>{loggedInUser}</li>
+                
                 {/* <li>Cart</li> */}
                 <button className='login_btn' onClick={() => { setLogin(!login) }}>{login ? "Login" : "Logout"}</button>
             </ul>

@@ -1,7 +1,7 @@
 import React from 'react'
-import UserFcn from '../UserFcn'
-import UserClass from '../UserClass'
-import ReactLifeCycle from "../ReactLifeCycle"
+import UserFcn from './UserFcn'
+import UserClass from './UserClass'
+import ReactLifeCycle from "./ReactLifeCycle"
 
 const About = () => {
   return (

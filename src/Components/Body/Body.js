@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import ResCard, { withPrmotedLabel } from '../ReastaurentCard/ResCard'
+import ResCard, { withPrmotedLabel } from '../ResCard'
 import "./Body.css";
 import Shimmer from '../Shimmer/Shimmer';
 import { Link } from 'react-router-dom';

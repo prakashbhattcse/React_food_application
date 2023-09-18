@@ -34,13 +34,13 @@ import Body from './Components/Body/Body';
 import Header from './Components/Header/Header';
 // import About from './Components/About/About ';
 import Error from './Components/Error';
-import Contact from './Components/Contact/Contact';
+import Contact from './Components/Contact';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import RestaurantMenu from './Components/RestaurantMenu';
 import ReactLifeCycle from "../src/Components/ReactLifeCycle"
 
 
-const About = lazy(() => import('./Components/About/About '));
+const About = lazy(() => import('./Components/About '));
 
 const App = () => {
   return (
