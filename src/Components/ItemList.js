@@ -3,10 +3,8 @@ import { CDN_URL } from '../utils/constants'
 
 const ItemList = React.memo(({ items }) => {
 
-    console.log(items)
-    // console.log(items.map)
-
-    // console.log(items?.card?.info)
+    // console.log(items)
+    // const [isOpen, setIsOpen] = useState(false);
     return (
 
         <>
@@ -19,14 +17,22 @@ const ItemList = React.memo(({ items }) => {
                             <div key={item?.card?.info?.id} className='flex justify-between mb-15 p-4 text-left border-b-2 font-sans'>
 
                                 <div className="flex flex-col w-8/12">
-                                    <div className="flex flex-row py-3">
-                                        <span className='font-bold'>{name } </span>
+                                    <div className="flex flex-row py-5">
+
+                                        <span className='font-bold'>{name} </span>
                                         <span> - ₹ {price / 100 || defaultPrice / 100}</span>
+                                    
                                     </div>
                                     <p className="mb-5 text-sm">{description}</p>
                                 </div>
-                                <div className="w-3/12 object-cover h-[96px]">
-                                    <img className='w-full h-[96px] object-cover rounded-md' src={CDN_URL + imageId} alt="" />
+                                
+                                <div className="w-3/12 object-cover h-[96px]  relative">
+                                    {imageId && (
+                                        <img className='w-full h-[96px] object-cover rounded-md' src={CDN_URL + imageId} alt="" />)
+                                    }
+                                    <div className="absolute flex justify-center items-start inset-0  ">
+                                        <button className="bg-black p-1 px-4 text-white ">Add +</button>
+                                    </div>
                                 </div>
                             </div>
                         )
