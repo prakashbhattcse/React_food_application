@@ -1,12 +1,16 @@
 import React from 'react'
 import { CDN_URL } from '../utils/constants'
+import { useDispatch } from 'react-redux'
+import { addItem } from '../utils/cartSlice'
 
 const ItemList = React.memo(({ items }) => {
 
-    // console.log(items)
+    const dispatch = useDispatch();
+    const handleAddItems = () => {
+        dispatch(addItem("dummy"))
+    }
     // const [isOpen, setIsOpen] = useState(false);
     return (
-
         <>
             <div className="">
                 {
@@ -21,17 +25,17 @@ const ItemList = React.memo(({ items }) => {
 
                                         <span className='font-bold'>{name} </span>
                                         <span> - ₹ {price / 100 || defaultPrice / 100}</span>
-                                    
+
                                     </div>
                                     <p className="mb-5 text-sm">{description}</p>
                                 </div>
-                                
+
                                 <div className="w-3/12 object-cover h-[96px]  relative">
                                     {imageId && (
                                         <img className='w-full h-[96px] object-cover rounded-md' src={CDN_URL + imageId} alt="" />)
                                     }
                                     <div className="absolute flex justify-center items-start inset-0  ">
-                                        <button className="bg-black p-1 px-4 text-white ">Add +</button>
+                                        <button className="bg-black p-1 px-4 text-white" onClick={handleAddItems}>Add +</button>
                                     </div>
                                 </div>
                             </div>

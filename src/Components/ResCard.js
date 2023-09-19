@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { CDN_URL } from '../utils/constants';
-
+import UserContext from '../utils/UserContext';
 
 const ResCard = (props) => {
 
     const { resData } = props;
-    // const { loggedInUser } = useContext(UserContext);
+    const { loggedInUser } = useContext(UserContext);
+    console.log(loggedInUser)
+
     const { info } = resData;
     const {
         cloudinaryImageId,
@@ -19,20 +21,22 @@ const ResCard = (props) => {
     const { deliveryTime } = sla;
 
 
- 
+
     return (
-        <div className='flex flex-col items-center justify-center w-[250px] h-[320px] m-3 p-3 rounded-md shadow-custom-light transition-all duration-300 bg-gradient-to-b from-c1 via-c2 to-c3 text-white'>
+        <div className='relative z-0 flex flex-col justify-center  w-[250px] h-[390px] m-3 p-3 rounded-md shadow-custom-light transition-all duration-300 bg-gradient-to-b from-c1 via-c2 to-c3 text-white'>
             <img
                 className="w-[250px] h-[200px] object-cover round-md"
                 alt="res-logo"
                 src={CDN_URL + cloudinaryImageId}
             />
-            <h4 className='mt-2.5'>{name}</h4>
-            {/* <h4>{cuisines}</h4> */}
-            <h5 className='mt-1.5'>{avgRating} stars</h5>
-            <h5 className='mt-1.5'>{costForTwo} </h5>
-            <h5 className='mt-1.5'>{deliveryTime} minutes</h5>
-            {/* <h4>User : {loggedInUser} </h4> */}
+            <div className="pl-2 mt-1.5">
+                <h4 className='mt-2.5 font-bold text-yellow-400'>{name}</h4>
+                {/* <h4>{cuisines}</h4> */}
+                <h5 >{avgRating} ⭐</h5>
+                <h5 >{costForTwo} </h5>
+                <h5 >{deliveryTime} minutes</h5>
+                <h4>User : {loggedInUser} </h4>
+            </div>
         </div>
     )
 }
@@ -44,7 +48,7 @@ export const withPrmotedLabel = (ResCard) => {
         return (
             <>
                 <div className="">
-                    <label>Promoted</label>
+                    <label className='absolute z-10 ml-3 bg-white text-black rounded-r-lg rounded-tl-md p-1 px-2'>Promoted</label>
                     <ResCard {...props} />
                 </div>
             </>
