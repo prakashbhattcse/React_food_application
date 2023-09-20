@@ -3,12 +3,18 @@ import { CDN_URL } from '../utils/constants'
 import { useDispatch } from 'react-redux'
 import { addItem } from '../utils/cartSlice'
 
-const ItemList = React.memo(({ items }) => {
+// const ItemList = React.memo(({ items }) => {
+const ItemList = ({ items }) => {
 
     const dispatch = useDispatch();
-    const handleAddItems = () => {
-        dispatch(addItem("dummy"))
+
+    const handleAddItems = (item) => {
+        //dispatch an action
+        dispatch(addItem(item))
     }
+
+
+
     // const [isOpen, setIsOpen] = useState(false);
     return (
         <>
@@ -35,7 +41,7 @@ const ItemList = React.memo(({ items }) => {
                                         <img className='w-full h-[96px] object-cover rounded-md' src={CDN_URL + imageId} alt="" />)
                                     }
                                     <div className="absolute flex justify-center items-start inset-0  ">
-                                        <button className="bg-black p-1 px-4 text-white" onClick={handleAddItems}>Add +</button>
+                                        <button className="bg-black p-1 px-4 text-white" onClick={() => handleAddItems(item)}>Add +</button>
                                     </div>
                                 </div>
                             </div>
@@ -45,6 +51,7 @@ const ItemList = React.memo(({ items }) => {
             </div>
         </>
     )
-})
+}
+// })
 
 export default ItemList

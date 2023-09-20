@@ -25,17 +25,17 @@ const ResCard = (props) => {
     return (
         <div className='relative z-0 flex flex-col justify-center  w-[250px] h-[390px] m-3 p-3 rounded-md shadow-custom-light transition-all duration-300 bg-gradient-to-b from-c1 via-c2 to-c3 text-white'>
             <img
-                className="w-[250px] h-[200px] object-cover round-md"
+                className="w-[250px] h-[200px] object-cover rounded-lg"
                 alt="res-logo"
                 src={CDN_URL + cloudinaryImageId}
             />
             <div className="pl-2 mt-1.5">
-                <h4 className='mt-2.5 font-bold text-yellow-400'>{name}</h4>
+                <h3 className='my-2.5 font-bold text-yellow-400'>{name}</h3>
                 {/* <h4>{cuisines}</h4> */}
-                <h5 >{avgRating} ⭐</h5>
-                <h5 >{costForTwo} </h5>
-                <h5 >{deliveryTime} minutes</h5>
-                <h4>User : {loggedInUser} </h4>
+                <h5 className='text-sm'>{avgRating} ⭐</h5>
+                <h5 className='text-sm'>{costForTwo} </h5>
+                <h5 className='text-sm'>{deliveryTime} minutes</h5>
+                <h4 className='text-sm'>User : {loggedInUser} </h4>
             </div>
         </div>
     )

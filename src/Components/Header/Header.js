@@ -42,7 +42,10 @@ const Header = () => {
                         <Link to="/reactlifecycle">React Life Cycle</Link>
                     </li>
 
-                    <li className='font-bold'>Cart - ({cartItems.length})</li>
+                    <li className='font-bold'>
+                        <Link to="/cart">Cart - ({cartItems.length})</Link>
+                    </li>
+
                     <button className='login_btn' onClick={() => { setLogin(!login) }}>{login ? "Login" : "Logout"}</button>
                 </ul>
             </div>

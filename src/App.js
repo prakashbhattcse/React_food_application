@@ -13,6 +13,7 @@ import ReactLifeCycle from "../src/Components/ReactLifeCycle"
 import userContext from './utils/UserContext';
 import { Provider } from 'react-redux';
 import appStore from "./utils/appStore"
+import Cart from './Components/Cart';
 
 
 
@@ -70,6 +71,10 @@ const Root = () => {
         {
           path: "/reactlifecycle",
           element: <ReactLifeCycle />,
+        },
+        {
+          path: "/cart",
+          element: <Cart/>
         },
       ],
       errorElement: <Error />
