@@ -3,8 +3,7 @@
 import React, { Suspense, useState, useEffect, lazy } from 'react'
 import './App.css';
 import Body from './Components/Body/Body';
-import Header from './Components/Header/Header';
-// import About from './Components/About/About ';
+import Header from './Components/Header';
 import Error from './Components/Error';
 import Contact from './Components/Contact';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
