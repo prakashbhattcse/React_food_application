@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { CDN_URL } from '../utils/constants'
 import { useDispatch } from 'react-redux'
 import { addItem } from '../utils/cartSlice'
+import { removeItem } from '../utils/cartSlice'
 
 // const ItemList = React.memo(({ items }) => {
 const ItemList = ({ items }) => {
+
 
     const dispatch = useDispatch();
 
@@ -13,7 +15,10 @@ const ItemList = ({ items }) => {
         dispatch(addItem(item))
     }
 
-
+    const handleRemoveItems = (item) => {
+        //dispatch an action
+        dispatch(removeItem(item))
+    }
 
     // const [isOpen, setIsOpen] = useState(false);
     return (
@@ -21,8 +26,10 @@ const ItemList = ({ items }) => {
             <div className="">
                 {
                     items?.map(item => {
+                        {console.log(item.card.info)}
+                        const { name, price, defaultPrice, description, imageId,quantity } = item?.card?.info;
 
-                        const { name, price, defaultPrice, description, imageId } = item?.card?.info;
+
                         return (
                             <div key={item?.card?.info?.id} className='flex justify-between mb-15 p-4 text-left border-b-2 font-sans'>
 
@@ -41,7 +48,15 @@ const ItemList = ({ items }) => {
                                         <img className='w-full h-[96px] object-cover rounded-md' src={CDN_URL + imageId} alt="" />)
                                     }
                                     <div className="absolute flex justify-center items-start inset-0  ">
-                                        <button className="bg-black p-1 px-4 text-white" onClick={() => handleAddItems(item)}>Add +</button>
+
+                                        <button className="bg-white p-1 px-4 text-black flex gap-2 rounded-sm" >
+
+                                            <div onClick={() => handleRemoveItems(item)}> -</div>
+                                            {quantity}
+                                            <div onClick={() => handleAddItems(item)}>+</div>
+
+                                        </button>
+
                                     </div>
                                 </div>
                             </div>
@@ -52,6 +67,12 @@ const ItemList = ({ items }) => {
         </>
     )
 }
-// })
 
-export default ItemList
+
+
+
+export default ItemList;
+
+
+
+

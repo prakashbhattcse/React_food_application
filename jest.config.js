@@ -129,6 +129,7 @@ const config = {
   //   "<rootDir>"
   // ],
 
+  
   // Allows you to use a custom runner instead of Jest's default test runner
   // runner: "jest-runner",
 
@@ -181,6 +182,17 @@ const config = {
   //   "\\\\node_modules\\\\",
   //   "\\.pnp\\.[^\\\\]+$"
   // ],
+
+  // transformIgnorePatterns: [
+  //   "/node_modules/(?!react-redux).+\\.js$"
+  // ],
+  
+
+  transform: {
+    "^.+\\.[t|j]sx?$": "babel-jest"
+  },
+
+
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
   // unmockedModulePathPatterns: undefined,

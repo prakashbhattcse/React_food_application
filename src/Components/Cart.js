@@ -5,9 +5,13 @@ import ItemList from './ItemList';
 
 const Cart = () => {
 
-    const cartItems = useSelector((store) => store.cart.items);
+    const cartItems = useSelector((store) => store.cart.items);  // This variable holds the current items in the cart. It uses the useSelector to select the items from the Redux store.
 
-    const dispatch = useDispatch();
+    const dispatch = useDispatch();   // This function allows you to dispatch actions to the Redux store.
+
+
+    // Calculate the total quantity of items in the cart
+    // const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
 
     const handleClearCart = () => {
         dispatch(clearCart())
@@ -16,6 +20,8 @@ const Cart = () => {
         <>
             <div className="text-centerm-4 p-4">
                 <h1 className="text-2xl font bold">Cart</h1>
+
+                {/* <p>Total items in cart: {totalQuantity}</p> Display the total quantity */}
                 <div className="w-6/12 m-auto">
                     <button className="bg-black" onClick={handleClearCart}>
                         Clear Cart
@@ -31,4 +37,15 @@ const Cart = () => {
 }
 
 export default Cart
+
+
+
+
+
+
+
+
+
+
+
 

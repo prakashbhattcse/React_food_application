@@ -3,12 +3,17 @@ import { LOGO_URL } from '../utils/constants'
 import { Link } from 'react-router-dom'
 import useOnlineStatus from '../utils/useOnlineStatus'
 import userContext from '../utils/UserContext'
-import { useSelector } from 'react-redux/es/hooks/useSelector';
+// import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { useSelector } from 'react-redux';
+
+// const { useSelector } = require('react-redux/es/hooks/useSelector');
 
 
 const Header = () => {
 
-    const [login, setLogin] = useState(false)
+    // const [login, setLogin] = useState(false)
+    const [btnNameReact, setBtnNameReact] = useState("Login");
+
     const { loggedInUser } = useContext(userContext);
 
 
@@ -38,16 +43,30 @@ const Header = () => {
                     <li className='mr-4 text-lg font-semibold'>
                         <Link to="/Contact">Contact Us</Link>
                     </li>
-                    <li className='mr-4 text-lg font-semibold'>{loggedInUser}</li>
+
+                    {/* USE CONTEXT */}
+                    {/* <li className='mr-4 text-lg font-semibold'>{loggedInUser}</li> */}
+
+
+
                     <li className='mr-4 text-lg font-semibold'>
-                        <Link className='text-white no-underline hover:text-red-500' to="/reactlifecycle">React Life Cycle</Link>
+                        <Link className='text-white no-underline hover:text-red-500' to="/reactlifecycle">Cycle</Link>
                     </li>
 
                     <li className='mr-4 text-lg font-semibold'>
-                        <Link className='text-white no-underline hover:text-red-500' to="/cart">Cart - ({cartItems.length})</Link>
+                        <Link className='text-white no-underline hover:text-red-500' to="/cart">Cart - ({cartItems.length} items)</Link>
                     </li>
-
-                    <button className='bg-white text-black rounded-md px-4 py-0' onClick={() => { setLogin(!login) }}>{login ? "Login" : "Logout"}</button>
+                    <button
+                        className="login"
+                        onClick={() => {
+                            btnNameReact === "Login"
+                                ? setBtnNameReact("Logout")
+                                : setBtnNameReact("Login");
+                        }}
+                    >
+                        {btnNameReact}
+                    </button>
+                    {/* <button className='bg-white text-black rounded-md px-4 py-0' onClick={() => { setLogin(!login) }}>{login ? "Login" : "Logout"}</button> */}
                 </ul>
             </div>
         </div >

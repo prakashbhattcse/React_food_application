@@ -5,6 +5,9 @@ import Shimmer from '../Shimmer/Shimmer';
 import { Link } from 'react-router-dom';
 import useOnlineStatus from '../../utils/useOnlineStatus';
 import userContext from '../../utils/UserContext';
+import Hero from '../Hero';
+
+
 
 
 const Body = () => {
@@ -32,6 +35,7 @@ const Body = () => {
     const fetchData = async () => {
         try {
             const data = await fetch(
+                // "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5961279&lng=77.1587375&collection=83645&tags=layout_CCS_NorthIndian&sortBy=&filters=&type=rcv2&offset=0&page_type=null"
                 "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5961279&lng=77.1587375&collection=83645&tags=layout_CCS_NorthIndian&sortBy=&filters=&type=rcv2&offset=0&page_type=null"
             );
             const json = await data.json();
@@ -48,7 +52,11 @@ const Body = () => {
     };
 
     return (
-        <>{loading ? (<Shimmer />) : (<div className="body">
+
+        
+        <>
+        <Hero/>
+        {loading ? (<Shimmer />) : (<div className="body">
             <div className="body-layout">
                 <div className="filter">
 
