@@ -28,7 +28,7 @@ const ItemList = React.memo(({ items }) => {
     }
 
     // Use the helper function in filter
-    const filteredItem = items.filter(isFirstOccurrence);
+    const filteredItem = items?.filter(isFirstOccurrence);
 
     return (
         <>
@@ -36,25 +36,28 @@ const ItemList = React.memo(({ items }) => {
                 {
                     filteredItem?.map(item => {
 
-                        const { id, name, price, defaultPrice, description, imageId, isVeg } = item?.card?.info;
+                        const { id, name, price, defaultPrice, description, imageId, isVeg, isBestseller } = item?.card?.info;
 
                         { console.log(item.card.info) }
                         return (
-                            <div key={item?.card?.info?.id} className='flex justify-between mb-15 p-4 text-left border-b-2 font-sans'>
+                            <div key={item?.card?.info?.id} className='flex justify-between mb-15 p-4 text-left border-b-2 font-sans items-center'>
 
                                 <div className="flex flex-col w-8/12">
                                     <div className="flex flex-col py-5">
 
 
-
-                                        {isVeg ? (<span className=" text-[0.55rem] border-2 border-green-500 p-0.5 w-fit ">
-                                            🟢
-                                        </span>
-                                        ) : (
-                                            <span className=" text-[0.55rem] border-2 border-red-500 p-0.5 w-fit ">
-                                                🔴
+                                        <div className="flex flex-row gap-4 mb-2">
+                                            {isVeg ? (<span className=" text-[0.55rem] border-2 border-green-500 p-0.5 w-fit ">
+                                                🟢
                                             </span>
-                                        )}
+                                            ) : (
+                                                <span className=" text-[0.55rem] border-2 border-red-500 p-0.5 w-fit ">
+                                                    🔴
+                                                </span>
+                                            )}
+
+                                            {isBestseller && <p>⭐Bestseller</p>}
+                                        </div>
                                         <span className='font-bold'>{name} </span>
                                         <span> ₹ {price / 100 || defaultPrice / 100}</span>
                                     </div>

@@ -9,14 +9,14 @@ const ResCard = (props) => {
 
     const { info } = resData;
 
-    
+
     const {
         cloudinaryImageId,
         name,
         avgRating,
         cuisines,
         costForTwo,
-        sla, id, promoted
+        sla, id, promoted, isOpen
     } = info;
 
     const { deliveryTime } = sla;
@@ -36,6 +36,7 @@ const ResCard = (props) => {
                 <h5 className='text-sm'>{avgRating} ⭐</h5>
                 <h5 className='text-sm'>{costForTwo} </h5>
                 <h5 className='text-sm'>{deliveryTime} minutes</h5>
+                {isOpen? (<p>Open</p>):(<p>Close</p>)}
                 <h4 className='text-sm'>User : {loggedInUser} </h4>
             </div>
         </div>

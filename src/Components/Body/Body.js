@@ -40,10 +40,8 @@ const Body = () => {
             );
             const json = await data.json();
 
-            // console.log(json)
             const restaurants = json.data.cards.slice(3).map(card => card.card?.card);
 
-            console.log(restaurants)
             setlistOfRestaurants(restaurants);
             setFilterdlistOfRestaurants(restaurants);
             setLoading(false);

@@ -9,7 +9,6 @@ const RestaurantCategory = ({ data, showItems, setShowIndex, i }) => {
        setShowIndex(); 
     }
 
-    console.log(data)
     return (
         <>
             <div className="flex flex-col bg-slate-200 mb-3 p-4 rounded-sm shadow-md">
