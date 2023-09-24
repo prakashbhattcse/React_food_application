@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import ItemList from './ItemList'
 
-const RestaurantCategory = ({ data,showItems,setShowIndex }) => {
+const RestaurantCategory = ({ data, showItems, setShowIndex, i }) => {
     // const [OpenItemList, setOpenItemList] = useState(false);
 
     const handleItems=()=>{
         // setOpenItemList(!OpenItemList)
-       setShowIndex();
-       
+       setShowIndex(); 
     }
 
+    console.log(data)
     return (
         <>
             <div className="flex flex-col bg-slate-200 mb-3 p-4 rounded-sm shadow-md">
@@ -19,8 +19,10 @@ const RestaurantCategory = ({ data,showItems,setShowIndex }) => {
                         ({data?.itemCards?.length}  {data?.categories?.length})
                     </div>
                     {/* <button className="bg-gray-200" onClick={() => setOpenItemList(!OpenItemList)}>⬇️</button> */}
-                    <button className="bg-gray-200" onClick={handleItems}>⬇️</button>
+                    <button className="bg-gray-200" onClick={handleItems} >{showItems ? "🔼" : "🔽"}</button>
                 </div>
+                
+                {/* Accordian Body */}
                 {showItems &&
                     <ItemList items={data?.itemCards} />
                 }

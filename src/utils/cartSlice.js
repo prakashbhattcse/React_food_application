@@ -1,35 +1,3 @@
-// import { createSlice } from "@reduxjs/toolkit";
-
-// // Create a slice with name "cart" and initial state
-// const cartSlice = createSlice({
-//     name: "cart",
-//     initialState: {
-//         items: [], // Initial state with an empty 'items' array
-//     },
-
-//     // Reducers (Actions)
-//     reducers: {
-//         // Action to add an item to the 'items' array
-//         addItem: (state, action) => {
-//             state.items.push(action.payload); // Modify the state by adding an item
-//         },
-//         // Action to remove an item from the end of the 'items' array
-//         removeItem: (state, action) => {
-//             state.items.pop(); // Modify the state by removing an item
-//         },
-//         // Action to clear the 'items' array
-//         clearCart: (state, action) => {
-//             state.items.length = 0; // Modify the state by clearing the cart
-//         },
-//     },
-// });
-
-// // Export actions and the reducer
-// export const { addItem, removeItem, clearCart } = cartSlice.actions;
-// export default cartSlice.reducer;
-
-
-
 //# addItem is an action.It is defined as a function inside the reducers object, and it is responsible for
 // adding an item to the state.items array.It takes the current state(state) and an action(action) as
 // parameters and modifies the state based on the action's payload (the item to be added).
@@ -60,10 +28,18 @@ const cartSlice = createSlice({
             localStorage.setItem('cart', JSON.stringify(state.items)); // Save cart to localStorage
         },
 
+        // removeItem: (state, action) => {
+            // state.items.pop(); // Modify the state by removing an item
+        // },
+
         removeItem: (state, action) => {
-            state.items.pop(); // Modify the state by removing an item
-            localStorage.setItem('cart', JSON.stringify(state.items)); // Save cart to localStorage
+            const index = state.items.findIndex(item => item.card.info.id === action.payload.card.info.id);
+            if (index !== -1) {
+                state.items.splice(index, 1);
+                localStorage.setItem('cart', JSON.stringify(state.items)); // Save cart to localStorage
+            }
         },
+        
         clearCart: (state, action) => {
             state.items.length = 0; // Modify the state by clearing the cart
             localStorage.removeItem('cart'); // Clear cart from localStorage

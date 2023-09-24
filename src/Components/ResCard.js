@@ -6,9 +6,10 @@ const ResCard = (props) => {
 
     const { resData } = props;
     const { loggedInUser } = useContext(UserContext);
-    console.log(loggedInUser)
 
     const { info } = resData;
+
+    
     const {
         cloudinaryImageId,
         name,

@@ -5,7 +5,7 @@ import useRestaurantMenu from '../utils/useRestaurantMenu';
 import RestaurantCategory from './RestaurantCategory';
 
 
-const RestaurantMenu = () => {
+const RestaurantMenu = React.memo( () => {
 
     const { resId } = useParams();
 
@@ -34,7 +34,7 @@ const RestaurantMenu = () => {
             c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory" ||
             c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory"
         )
-    // console.log(categories)
+
 
     return (
         <>
@@ -49,6 +49,7 @@ const RestaurantMenu = () => {
                     <p className="">{cuisines.join(", ")}</p>
                     <p>{costForTwo}</p>
                     <p>{city}</p>
+                  
                 </div>
 
                 <div className="">
@@ -65,6 +66,7 @@ const RestaurantMenu = () => {
         </>
     )
 }
+)
 
 export default RestaurantMenu
 

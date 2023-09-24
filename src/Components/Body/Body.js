@@ -40,8 +40,10 @@ const Body = () => {
             );
             const json = await data.json();
 
+            // console.log(json)
             const restaurants = json.data.cards.slice(3).map(card => card.card?.card);
 
+            console.log(restaurants)
             setlistOfRestaurants(restaurants);
             setFilterdlistOfRestaurants(restaurants);
             setLoading(false);
@@ -53,48 +55,48 @@ const Body = () => {
 
     return (
 
-        
+
         <>
-        <Hero/>
-        {loading ? (<Shimmer />) : (<div className="body">
-            <div className="body-layout">
-                <div className="filter">
+            <Hero />
+            {loading ? (<Shimmer />) : (<div className="body">
+                <div className="body-layout">
+                    <div className="filter">
 
-                    <div className="search">
-                        <input type="text" className="inputSearch text-black" value={inputText} onChange={(e) => { setInputText(e.target.value) }} />
+                        <div className="search">
+                            <input type="text" className="inputSearch text-black" value={inputText} onChange={(e) => { setInputText(e.target.value) }} />
 
-                        <button className="searchBtn" onClick={
-                            () => {
-                                const filterd = listOfRestaurants.filter((res) => res.info.name.toLowerCase().includes(inputText.toLowerCase()))
-                                setFilterdlistOfRestaurants(filterd);
-                            }
-                        }>Search</button>
+                            <button className="searchBtn" onClick={
+                                () => {
+                                    const filterd = listOfRestaurants.filter((res) => res.info.name.toLowerCase().includes(inputText.toLowerCase()))
+                                    setFilterdlistOfRestaurants(filterd);
+                                }
+                            }>Search</button>
+                        </div>
+
+                        <button className="filter-btn" onClick={() => {
+                            const filterdList = listOfRestaurants.filter((res) => res.info.avgRating > 4)
+                            setlistOfRestaurants(filterdList);
+                        }}>Top Rated Restaurants</button>
+
+
+                        <input type="text" className="inputSearch text-black" value={loggedInUser} onChange={(e) => { setUser(e.target.value) }} />
                     </div>
 
-                    <button className="filter-btn" onClick={() => {
-                        const filterdList = listOfRestaurants.filter((res) => res.info.avgRating > 4)
-                        setlistOfRestaurants(filterdList);
-                    }}>Top Rated Restaurants</button>
+                    <div className="res-container">
+                        {filterdlistOfRestaurants.map((restaurant) => (
+                            <Link key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}>
 
-
-                    <input type="text" className="inputSearch text-black" value={loggedInUser} onChange={(e) => { setUser(e.target.value) }} />
+                                {restaurant.info.promoted ? (<RestaurantCardPromoted resData={restaurant} />) :
+                                    (
+                                        <ResCard resData={restaurant} />
+                                    )
+                                }
+                            </Link>
+                        ))}
+                    </div>
                 </div>
-
-                <div className="res-container">
-                    {filterdlistOfRestaurants.map((restaurant) => (
-                        <Link key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}>
-
-                            {restaurant.info.promoted ? (<RestaurantCardPromoted resData={restaurant} />) :
-                                (
-                                    <ResCard resData={restaurant} />
-                                )
-                            }
-                        </Link>
-                    ))}
-                </div>
-            </div>
-        </div>)
-        }
+            </div>)
+            }
         </>
     )
 }

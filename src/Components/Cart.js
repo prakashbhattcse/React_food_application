@@ -13,6 +13,16 @@ const Cart = () => {
     // Calculate the total quantity of items in the cart
     // const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
 
+    const findTotal = () => {
+        let totalSum = 0
+        cartItems.map((el) => {
+            totalSum += el.card.info.price ? el.card.info.price / 100 : el.card.info.defaultPrice / 100
+        })
+        return totalSum
+    }
+
+
+
     const handleClearCart = () => {
         dispatch(clearCart())
     }
@@ -27,9 +37,13 @@ const Cart = () => {
                         Clear Cart
                     </button>
                     {cartItems.length === 0 && (
-                        <h1>Cart is empty</h1>
+                        <h1>🛒 Cart is empty</h1>
                     )}
                     <ItemList items={cartItems} />
+                    <div className="border-b border-dashed my-4" />
+                    <div className="flex flex-row-reverse mb-10">
+                        <h1 className="font-bold text-xl">Total : ₹{findTotal()}</h1>
+                    </div>
                 </div>
             </div>
         </>
