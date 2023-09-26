@@ -25,7 +25,7 @@ const App = () => {
   useEffect(() => {
 
     const data = {
-      name: "Amit"
+      name: "Use Context"
     }
 
     setUser(data.name)

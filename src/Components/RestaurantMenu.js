@@ -10,6 +10,7 @@ const RestaurantMenu = React.memo( () => {
     const { resId } = useParams();
 
     const [showIndex, setShowIndex] = useState(1)
+
     // I have transfered the data to other file to make custom hook and short this code
     const { resInfo, loading } = useRestaurantMenu(resId);
 
@@ -34,7 +35,7 @@ const RestaurantMenu = React.memo( () => {
             c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory" ||
             c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory"
         )
-
+    
 
     return (
         <>
@@ -47,7 +48,7 @@ const RestaurantMenu = React.memo( () => {
                 <div className=" my-4">
                     <h1 className="font-semibold text-2xl">{name}</h1>
                     <p className="">{cuisines.join(", ")}</p>
-                    <p>{costForTwo}</p>
+                    <p>{costForTwo/100}</p>
                     <p>{city}</p>
                   
                 </div>

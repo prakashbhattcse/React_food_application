@@ -16,7 +16,9 @@ const Cart = () => {
     const findTotal = () => {
         let totalSum = 0
         cartItems.map((el) => {
-            totalSum += el.card.info.price ? el.card.info.price / 100 : el.card.info.defaultPrice / 100
+            return (
+                totalSum += el.card.info.price ? el.card.info.price / 100 : el.card.info.defaultPrice / 100
+            )
         })
         return totalSum
     }
@@ -29,19 +31,22 @@ const Cart = () => {
     return (
         <>
             <div className="text-centerm-4 p-4">
-                <h1 className="text-2xl font bold">Cart</h1>
+                <h1 className="text-4xl font-bold text-center">Cart</h1>
 
                 {/* <p>Total items in cart: {totalQuantity}</p> Display the total quantity */}
                 <div className="w-6/12 m-auto">
-                    <button className="bg-black" onClick={handleClearCart}>
-                        Clear Cart
-                    </button>
+
                     {cartItems.length === 0 && (
                         <h1>🛒 Cart is empty</h1>
                     )}
-                    <ItemList items={cartItems} />
+                    <div className="border flex border-gray-500 rounded-lg justify-between gap-3 mt-5">
+                        <ItemList items={cartItems} />
+                    </div>
                     <div className="border-b border-dashed my-4" />
-                    <div className="flex flex-row-reverse mb-10">
+                    <div className="flex flex-row justify-between mb-10">
+                        <button className="bg-black p-2 rounded-md text-white" onClick={handleClearCart}>
+                            Clear Cart
+                        </button>
                         <h1 className="font-bold text-xl">Total : ₹{findTotal()}</h1>
                     </div>
                 </div>

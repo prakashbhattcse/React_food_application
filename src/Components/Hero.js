@@ -1,58 +1,3 @@
-// import React from 'react'
-// import { useState } from 'react'
-// import { useEffect } from 'react'
-// import { CDN_URL } from '../utils/constants'
-
-// const Hero = () => {
-
-//     const [title, settitle] = useState()
-
-//     useEffect(() => {
-
-//         fetchData();
-//     }, [])
-
-//     const fetchData = async () => {
-
-//         const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5961279&lng=77.1587375&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
-//         const json = await data.json();
-
-//         // const title = json?.data?.cards[1]?.card?.card.imageGridCards.info
-//         const title = json?.data?.cards[1]?.card?.card
-//         settitle(title)
-//         console.log(title)
-//     }
-
-//     return (<>
-
-//         <h1>{title?.header?.title}</h1>
-
-//         <div className='flex flex-row'>
-//         {
-//             title?.imageGridCards?.info?.map((item, i) =>
-
-//                 <div key={i}>
-//                     <div className="flex flex-col">
-//                         <img src={CDN_URL + item.imageId} alt="" className='w-[9rem]' />
-//                         <p>{item.action.text}</p>
-//                     </div>
-//                 </div>
-//             )
-//         }
-//         </div>
-
-
-//     </>
-//     )
-// }
-
-// export default Hero
-
-
-
-
-
-
 import React, { useState, useEffect } from 'react';
 import { CDN_URL } from '../utils/constants';
 
@@ -88,33 +33,13 @@ const Hero = () => {
         }
     };
 
-    // const handleNextBanner = () => {
-    //     if (bannerActiveIndex < banner.length - 4) {
-    //         setBannerActiveIndex(bannerActiveIndex + 4);
-    //     }
-    // };
-    
-    // const handlePrevBanner = () => {
-    //     if (bannerActiveIndex >= 4) {
-    //         setBannerActiveIndex(bannerActiveIndex - 4);
-    //     }
-    // };
-    
-
-
-
     return (
         <>
-            <div className="flex w-[90%] m-auto flex-col">
+            <div className="flex w-[90%] m-auto mt-7 flex-col">
 
                 {/* BANNER SECTION */}
-                {/* <div className='flex justify-end'>
-                    <button onClick={handlePrevBanner} className='mr-2 text-3xl'>◀️</button>
-                    <button onClick={handleNextBanner} className='mr-2 text-3xl'>▶️</button>
-                </div> */}
 
-
-                <div className="flex flex-row gap-2">
+                <div className="flex flex-row gap-2 mt-5 mb-9">
                     {banner?.map((item, i) =>
                         <div key={i} className={`flex flex-col ${i >= bannerActiveIndex && i < bannerActiveIndex + 4 ? 'block' : 'hidden'}`}>
                             <img src={CDN_URL + item.imageId} alt="" />
@@ -123,20 +48,8 @@ const Hero = () => {
                 </div>
 
 
-                {/* <div className="flex flex-row">
-                    {banner?.map((item, i) =>
-                      
-                        <div key={i} className={`flex flex-row gap-4 ${i >= bannerActiveIndex && i < bannerActiveIndex + 9 ? 'block' : 'hidden'}`}>
-                      
-                            <img src={CDN_URL + item.imageId} alt="" className='flex gap-4' />
-                      
-                        </div>
-                    )}
-                </div> */}
-
-
                 {/* FOOD ITEMS CATEGORY SECTION */}
-                <h1>{foodItems?.header?.title}</h1>
+                <h1 className='font-bold text-xl text-red-600'>{foodItems?.header?.title}</h1>
                 <div className='flex justify-end'>
                     <button onClick={handlePrev} className='mr-2 text-3xl'>◀️</button>
                     <button onClick={handleNext} className='mr-2 text-3xl'>▶️</button>

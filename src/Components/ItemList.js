@@ -5,6 +5,7 @@ import { addItem } from '../utils/cartSlice'
 import { removeItem } from '../utils/cartSlice'
 
 
+
 // const ItemList = ({ items }) => {
 const ItemList = React.memo(({ items }) => {
     const dispatch = useDispatch();
@@ -38,9 +39,8 @@ const ItemList = React.memo(({ items }) => {
 
                         const { id, name, price, defaultPrice, description, imageId, isVeg, isBestseller } = item?.card?.info;
 
-                        { console.log(item.card.info) }
                         return (
-                            <div key={item?.card?.info?.id} className='flex justify-between mb-15 p-4 text-left border-b-2 font-sans items-center'>
+                            <div key={item?.card?.info?.id} className='flex justify-between mb-15 p-4 text-left border-b-2 font-sans items-center bg-white rounded-md mb-2'>
 
                                 <div className="flex flex-col w-8/12">
                                     <div className="flex flex-col py-5">
@@ -65,15 +65,17 @@ const ItemList = React.memo(({ items }) => {
                                 </div>
 
                                 <div className="w-3/12 object-cover h-[96px]  relative">
-                                    {imageId && (
-                                        <img className='w-full h-[96px] object-cover rounded-md' src={CDN_URL + imageId} alt="" />)
+                                    {imageId ? (
+                                        <img className='w-full h-[96px] object-cover rounded-md' src={CDN_URL + imageId} alt="" />) :
+                                        (<img className='w-full h-[96px] object-cover rounded-md' src={process.env.PUBLIC_URL + '/default1.jpg'} alt="" />)
+
                                     }
-                                    <div className="absolute flex justify-center items-start inset-0  ">
+                                    <div className="absolute flex justify-center items-start inset-0 ">
 
                                         {
                                             cartItems.find((el) => el.card.info.id === item.card.info.id) ?
 
-                                                <div className="bg-white p-1 px-4 text-black flex gap-2 rounded-sm">
+                                                <div className="bg-white  p-1 px-4 text-black flex gap-2 rounded-lg">
 
                                                     <button className="px-2" onClick={() => handleRemoveItems(id)}>-</button>
                                                     <span className="px-2">{cartItems.filter(el => el.card.info.id === item.card.info.id).length}</span>
