@@ -28,9 +28,6 @@ const cartSlice = createSlice({
             localStorage.setItem('cart', JSON.stringify(state.items)); // Save cart to localStorage
         },
 
-        // removeItem: (state, action) => {
-            // state.items.pop(); // Modify the state by removing an item
-        // },
 
         removeItem: (state, action) => {
             const index = state.items.findIndex(item => item.card.info.id === action.payload.card.info.id);
