@@ -9,43 +9,44 @@
 //   reducer functions defined for the removeItem and clearCart actions within the same reducers object.
 
 
-import { createSlice } from "@reduxjs/toolkit";
+// import { createSlice } from "@reduxjs/toolkit";
 
-const cartSlice = createSlice({
-    name: "cart",
-    initialState: {
-        items: JSON.parse(localStorage.getItem('cart')) || [], // Load cart from localStorage  
-        // #  this line is converting the current state of the cart items into a JSON string and storing it in local storage under the key 'cart'. This allows the state of the cart items to persist across browser sessions.
-    },
+// const cartSlice = createSlice({
+//     name: "cart",
+//     initialState: {
+//         items: JSON.parse(localStorage.getItem('cart')) || [], // Load cart from localStorage  
+//         // #  this line is converting the current state of the cart items into a JSON string and storing it in local storage under the key 'cart'. This allows the state of the cart items to persist across browser sessions.
+//     },
 
-    // Reducers (Actions)
-    reducers: {
-        addItem: (state, action) => {
+//     // Reducers (Actions)
+//     reducers: {
+//         addItem: (state, action) => {
 
-            const existingItem = state.items.find(item => item.id === action.payload.id);
+//             const existingItem = state.items.find(item => item.id === action.payload.id);
             
-            state.items.push(action.payload);   // Modify the state by adding an item
-            localStorage.setItem('cart', JSON.stringify(state.items)); // Save cart to localStorage
-        },
+//             state.items.push(action.payload);   // Modify the state by adding an item
+//             localStorage.setItem('cart', JSON.stringify(state.items)); // Save cart to localStorage
+//         },
 
 
-        removeItem: (state, action) => {
-            const index = state.items.findIndex(item => item.card.info.id === action.payload.card.info.id);
-            if (index !== -1) {
-                state.items.splice(index, 1);
-                localStorage.setItem('cart', JSON.stringify(state.items)); // Save cart to localStorage
-            }
-        },
+//         removeItem: (state, action) => {
+//             const index = state.items.findIndex(item => item.card.info.id === action.payload);
+//             if (index !== -1) {
+//                 state.items.splice(index, 1);
+//                 // state.items.splice(action.payload, 1);
+//                 localStorage.setItem('cart', JSON.stringify(state.items)); // Save cart to localStorage
+//             }
+//         },
         
-        clearCart: (state, action) => {
-            state.items.length = 0; // Modify the state by clearing the cart
-            localStorage.removeItem('cart'); // Clear cart from localStorage
-        },
-    },
-});
+//         clearCart: (state, action) => {
+//             state.items.length = 0; // Modify the state by clearing the cart
+//             localStorage.removeItem('cart'); // Clear cart from localStorage
+//         },
+//     },
+// });
 
-export const { addItem, removeItem, clearCart } = cartSlice.actions;
-export default cartSlice.reducer;
+// export const { addItem, removeItem, clearCart } = cartSlice.actions;
+// export default cartSlice.reducer;
 
 
 
@@ -70,5 +71,49 @@ export default cartSlice.reducer;
 
 
 
+import { createSlice } from "@reduxjs/toolkit";
 
+const cartSlice = createSlice({
+    name: "cart",
+    initialState: {
+        items: JSON.parse(localStorage.getItem('cart')) || [], 
+    },
 
+    reducers: {
+        addItem: (state, action) => {
+            const existingIndex = state.items.findIndex(item => item.card.info.id === action.payload.card.info.id);
+
+            if (existingIndex === -1) {
+                state.items.push({ ...action.payload, quantity: 1 });
+            } else {
+                // If the item already exists in the cart, increase its quantity
+                state.items[existingIndex].quantity += 1;
+            }
+
+            localStorage.setItem('cart', JSON.stringify(state.items)); 
+        },
+
+        removeItem: (state, action) => {
+            const index = state.items.findIndex(item => item.card.info.id === action.payload);
+
+            if (index !== -1) {
+                // If the item's quantity is greater than 1, decrease its quantity
+                if (state.items[index].quantity > 1) {
+                    state.items[index].quantity -= 1;
+                } else {
+                    state.items.splice(index, 1);
+                }
+
+                localStorage.setItem('cart', JSON.stringify(state.items));
+            }
+        },
+        
+        clearCart: (state, action) => {
+            state.items.length = 0; 
+            localStorage.removeItem('cart'); 
+        },
+    },
+});
+
+export const { addItem, removeItem, clearCart } = cartSlice.actions;
+export default cartSlice.reducer;

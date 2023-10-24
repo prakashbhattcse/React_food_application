@@ -1,27 +1,32 @@
-
-
 import React, { Suspense, useState, useEffect, lazy } from 'react'
 import './App.css';
 import Body from './Components/Body/Body';
 import Header from './Components/Header';
 import Error from './Components/Error';
 import Contact from './Components/Contact';
-import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Outlet, useNavigate } from 'react-router-dom';
 import RestaurantMenu from './Components/RestaurantMenu';
 import ReactLifeCycle from "../src/Components/ReactLifeCycle"
 import userContext from './utils/UserContext';
-import { Provider } from 'react-redux';
+import { Provider, useDispatch } from 'react-redux';
 import appStore from "./utils/appStore"
 import Cart from './Components/Cart';
+import Login from './Components/Login';
+import { useLocation } from 'react-router-dom';
 
 
 
 const About = lazy(() => import('./Components/About '));
 
+
+
+
 const App = () => {
 
-
+  const location = useLocation();
   const [User, setUser] = useState()
+
+
   useEffect(() => {
 
     const data = {
@@ -35,17 +40,19 @@ const App = () => {
 
   return (
     <>
-    <Provider store={appStore}>
-      <userContext.Provider value={{ loggedInUser: User,setUser }}>
-        <Header />
-        <Outlet />
-      </userContext.Provider>
+      <Provider store={appStore}>
+        <userContext.Provider value={{ loggedInUser: User, setUser }}>
+          {location.pathname !== '/login' && <Header />}
+          <Outlet />
+        </userContext.Provider>
       </Provider>
     </>
   );
 };
 
 const Root = () => {
+
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -54,6 +61,10 @@ const Root = () => {
         {
           path: "/about",
           element: <Suspense fallback={<h1>LOADING</h1>}><About /></Suspense>,
+        }, {
+          path: "/login",
+          element: <Login />
+
         },
         {
           path: "/contact",
@@ -73,7 +84,7 @@ const Root = () => {
         },
         {
           path: "/cart",
-          element: <Cart/>
+          element: <Cart />
         },
       ],
       errorElement: <Error />
@@ -81,6 +92,8 @@ const Root = () => {
 
 
   ]);
+
+
 
   return (
     <RouterProvider router={router}>

@@ -36,10 +36,14 @@ const Body = () => {
         try {
             const data = await fetch(
                 // "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5961279&lng=77.1587375&collection=83645&tags=layout_CCS_NorthIndian&sortBy=&filters=&type=rcv2&offset=0&page_type=null"
-                "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5961279&lng=77.1587375&collection=83645&tags=layout_CCS_NorthIndian&sortBy=&filters=&type=rcv2&offset=0&page_type=null"
+                // "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5961279&lng=77.1587375&collection=83645&tags=layout_CCS_NorthIndian&sortBy=&filters=&type=rcv2&offset=0&page_type=null"
+                   "https://prakashbhattcse.github.io/food_website_api/food_api.json"
+            
+                // "https://github.com/aditya1819/data/mockhotels.json"
+
             );
             const json = await data.json();
-
+   
             const restaurants = json.data.cards.slice(3).map(card => card.card?.card);
 
             setlistOfRestaurants(restaurants);

@@ -9,6 +9,8 @@ const ResCard = (props) => {
 
     const { info } = resData;
 
+//  console.log(info)
+//  console.log(resData)
 
     const {
         cloudinaryImageId,
@@ -24,7 +26,7 @@ const ResCard = (props) => {
 
 
     return (
-        <div className='relative z-0 flex flex-col justify-center  w-[250px] h-[390px] m-3 p-3 rounded-md shadow-custom-light transition-all duration-300 bg-gradient-to-b from-c1 via-c2 to-c3 text-white'>
+        <div className='relative z-0 flex flex-col justify-center select-text w-[250px] h-[390px] m-3 p-3 rounded-md shadow-custom-light transition-all duration-300 bg-gradient-to-b from-c1 via-c2 to-c3 text-white'>
             <img
                 className="w-[250px] h-[200px] object-cover rounded-lg"
                 alt="res-logo"
@@ -32,6 +34,7 @@ const ResCard = (props) => {
             />
             <div className="pl-2 mt-1.5">
                 <h3 className='my-2.5 font-bold text-yellow-400'>{name}</h3>
+                <p className="select-text">{id}</p>
                 {/* <h4>{cuisines}</h4> */}
                 <h5 className='text-sm'>{avgRating} ⭐</h5>
                 <h5 className='text-sm'>{costForTwo} </h5>

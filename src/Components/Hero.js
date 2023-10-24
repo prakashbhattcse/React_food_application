@@ -11,10 +11,12 @@ const Hero = () => {
     }, []);
 
     const fetchData = async () => {
-        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5961279&lng=77.1587375&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+        // const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5961279&lng=77.1587375&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+        const data = await fetch("https://prakashbhattcse.github.io/food_website_api/hero_api.json");
         const json = await data.json();
         setTitle(json.data.cards);
     };
+    
 
 
     const banner = title?.[0]?.card?.card?.imageGridCards?.info;
