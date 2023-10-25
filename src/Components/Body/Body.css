@@ -1,8 +1,10 @@
+
+
 .body {
   /* background: linear-gradient(to bottom, #f0f0f0, #f2f2f2); */
   /* color: #333333; */
-  background: linear-gradient(to bottom, #333333, #444444);
-
+  /* background: linear-gradient(to bottom, #333333, #444444); */
+background-color:#212121 ;
   display: flex;
   justify-content: center;
   /* align-items: center; */
@@ -44,13 +46,68 @@ align-items: center;
 }
 
 .inputSearch{
-    padding: .2rem;
+    /* padding: .2rem; */
     border-radius: .3rem 0 0 .3rem;
     border: none;
     outline: none;
 }
 
 .searchBtn{
-    padding: .2rem;
+    /* padding: .2rem; */
     border: none;
 }
+
+.overlay{
+  background-color: transparent;
+  z-index: 10;
+  position: absolute;
+  top: -2rem;
+}
+
+.overlay-hero{
+  z-index: 10;
+  position: absolute;
+}
+
+.before-div::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../../utils/images/leavesbg.png');
+  background-size: cover;
+  z-index: 10;
+  animation: scaleIn 1s ease-in-out forwards;
+}
+
+.before-tomato::before {
+  content: "";
+  position: absolute;
+  top: 2rem;
+  left: 28rem;
+  width: 8%;
+  height: 50%;
+  background-image: url('../../utils/images/tomato.png');
+  background-size:contain;
+  background-repeat: no-repeat;
+  z-index: 10;
+  animation: scaleIn 1s ease-in-out forwards;
+}
+
+.scale-animation{
+  animation: scaleIn 1s ease-in-out forwards;
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+    border-radius: 50%;
+  }
+  100% {
+    transform: scale(1);
+    border-radius: 0%;
+  }
+}
+

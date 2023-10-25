@@ -39,17 +39,18 @@ const RestaurantMenu = React.memo( () => {
 
     return (
         <>
-            <div className="flex justify-center text-center w-6/12 m-auto flex-col">
+        <div className='bg-background w-full bg-bgimage bg-cover bg-fixed '>
+            <div className="flex justify-center text-center w-6/12 m-auto flex-col bg-foodbg">
                 {/* // ## itemCards` was `undefined` during the first render of the component. 
             This happened because data fetching is asynchronous, which means that the component 
             renders before the data is fetched. So during the first render, `itemCards` is 
             `undefined`, and trying to call `map` on it results in an error. */}
 
-                <div className=" my-4">
-                    <h1 className="font-semibold text-2xl">{name}</h1>
-                    <p className="">{cuisines.join(", ")}</p>
-                    <p>{costForTwo/100}</p>
-                    <p>{city}</p>
+                <div className=" my-8 text-secondary z-20">
+                    <h1 className="font-semibold text-6xl">{name}</h1>
+                    <p className="text-xl">{cuisines.join(", ")}</p>
+                    {/* <p>{costForTwo/100}</p> */}
+                    {/* <p>{city}</p> */}
                   
                 </div>
 
@@ -63,6 +64,7 @@ const RestaurantMenu = React.memo( () => {
                     ))}
                 </div>
 
+            </div>
             </div>
         </>
     )

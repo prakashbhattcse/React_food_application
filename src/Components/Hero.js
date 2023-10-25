@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { CDN_URL } from '../utils/constants';
+import { FaArrowCircleLeft, FaArrowCircleRight } from 'react-icons/fa';
+import curve from "../utils/images/curve.png"
+import "../Components/Body/Body.css"
 
 const Hero = () => {
     const [title, setTitle] = useState();
@@ -16,7 +19,6 @@ const Hero = () => {
         const json = await data.json();
         setTitle(json.data.cards);
     };
-    
 
 
     const banner = title?.[0]?.card?.card?.imageGridCards?.info;
@@ -36,12 +38,17 @@ const Hero = () => {
     };
 
     return (
-        <>
+        <div className="relative">
+        <img src={curve} alt="" className='overlay' />
+            <div className="absolute inset-x-0 top-[-30px] bg-gradient-to-b from-black to-transparent h-[100px] opacity-50">
+           
+            </div>
             <div className="flex w-[90%] m-auto mt-7 flex-col">
 
                 {/* BANNER SECTION */}
-
+                <h1 className='font-bold text-xl text-red-600'>Banners</h1>
                 <div className="flex flex-row gap-2 mt-5 mb-9">
+
                     {banner?.map((item, i) =>
                         <div key={i} className={`flex flex-col ${i >= bannerActiveIndex && i < bannerActiveIndex + 4 ? 'block' : 'hidden'}`}>
                             <img src={CDN_URL + item.imageId} alt="" />
@@ -51,10 +58,11 @@ const Hero = () => {
 
 
                 {/* FOOD ITEMS CATEGORY SECTION */}
-                <h1 className='font-bold text-xl text-red-600'>{foodItems?.header?.title}</h1>
+                {/* <h1 className='font-bold text-xl text-red-600'>{foodItems?.header?.title}</h1> */}
+                <h1 className='font-bold text-xl text-red-600'>What we offer</h1>
                 <div className='flex justify-end'>
-                    <button onClick={handlePrev} className='mr-2 text-3xl'>◀️</button>
-                    <button onClick={handleNext} className='mr-2 text-3xl'>▶️</button>
+                    <button onClick={handlePrev} className='mr-2 text-3xl'><FaArrowCircleLeft className='text-secondary' /></button>
+                    <button onClick={handleNext} className='mr-2 text-3xl'><FaArrowCircleRight className='text-secondary' /></button>
                 </div>
                 <div className='flex flex-row'>
                     {foodItems?.imageGridCards?.info?.map((item, i) =>
@@ -64,7 +72,8 @@ const Hero = () => {
                     )}
                 </div>
             </div>
-        </>
+            <img src={curve} alt="" className='overlay-hero' />
+        </div>
     );
 };
 

@@ -783,3 +783,10 @@ export const resObj = [
 ]
 
 
+export const colors = {
+    background: 'bg-gray-900',
+    formBackground: 'bg-gray-800',
+    inputBackground: 'bg-gray-700',
+    textColor: 'text-white',
+    buttonColor: 'bg-red-600',
+};

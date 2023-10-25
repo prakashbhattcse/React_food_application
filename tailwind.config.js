@@ -3,28 +3,27 @@ module.exports = {
   content: ["./src/**/*.{js,html}"],
   theme: {
     extend: {
+      colors: {
+        'background': '#212121',
+        'bg-secondary': '#303030',
+        'primary': '#282828',
+        'secondary': '#C19D60',
+        'white': '#FFFFFF',
+        'border-custom': 'rgba(255,255,255,0.08)',
+        'red':'#E62B3D'
+      },
       backgroundImage: {
-        'gradient-to-h': 'linear-gradient(to bottom, #222222, #111111)'
+        'bgimage': 'url("../src/utils/images/bgimg.png")',
+        'foodbg': 'url("../src/utils/images/food.png)',
       },
       fontFamily: {
-        'sans': ['Helvetica', 'Arial', 'sans-serif'],
-        'serif': ['Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif'],
-        'mono': ['Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
-        'display': ['Oswald'],
-        'body': ['Open Sans'],
+
+        'funky': ['Playpen Sans', 'cursive'],// Replace 'Roboto' with the actual font name
       },
-      boxShadow: {
-        'custom-light': '0 4px 8px 0 rgba(0, 0, 0, 0.2)',
-      },
-      transitionDuration: {
-        '300': '0.3s',
-      },
-      colors: {
-        'c1': '#0f2027',
-        'c2': '#203a43',
-        'c3': '#2c5364',
-      },
+
     },
+
   },
   plugins: [],
+
 };
