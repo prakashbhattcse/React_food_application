@@ -60,7 +60,7 @@ import {Component} from "path";
 
 *clearCart* : Clears all items from the cart and removes the cart from localStorage. 
 
-# When an item is added to the cart, the addItem action is dispatched. In the reducer for this action, after the item is added to the state, the updated state is saved to localStorage.
+- When an item is added to the cart, the addItem action is dispatched. In the reducer for this action, after the item is added to the state, the updated state is saved to localStorage.
 
 - Similarly, when an item is removed or the cart is cleared, the updated state (after removal of items or clearing) is saved to localStorage. 
 
