@@ -42,7 +42,7 @@ const App = () => {
     <>
       <Provider store={appStore}>
         <userContext.Provider value={{ loggedInUser: User, setUser }}>
-          {location.pathname !== '/login' && <Header />}
+          {location.pathname !== '/' && <Header />}
           <Outlet />
         </userContext.Provider>
       </Provider>
@@ -62,7 +62,7 @@ const Root = () => {
           path: "/about",
           element: <Suspense fallback={<h1>LOADING</h1>}><About /></Suspense>,
         }, {
-          path: "/login",
+          path: "/",
           element: <Login />
 
         },
@@ -71,7 +71,7 @@ const Root = () => {
           element: <Contact />,
         },
         {
-          path: "/",
+          path: "/home",
           element: <Body />,
         },
         {

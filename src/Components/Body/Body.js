@@ -66,8 +66,8 @@ const Body = () => {
 
                     <div className={`filter flex flex-col gap-4 p-4  rounded-md ${colors.textColor} mt-4`}>
                         <div className="search flex">
-                            <input type="text" className={`inputSearch  p-2 rounded-md rounded-r-nonebg-red ${colors.textColor} placeholder-gray-500`} value={inputText} placeholder='search reastro' onChange={(e) => { setInputText(e.target.value) }} />
-                            <button className={`searchBtn p-2 rounded-md rounded-l-none bg-red ${colors.textColor}`} onClick={
+                            <input type="text" className={`inputSearch  p-2 rounded-md rounded-r-nonebg-red text-secondary font-medium placeholder-gray-500`} value={inputText} placeholder='search reastro' onChange={(e) => { setInputText(e.target.value) }} />
+                            <button className={`searchBtn p-2 rounded-md rounded-l-none bg-red text-white`} onClick={
                                 () => {
                                     const filterd = listOfRestaurants.filter((res) => res.info.name.toLowerCase().includes(inputText.toLowerCase()))
                                     setFilterdlistOfRestaurants(filterd);

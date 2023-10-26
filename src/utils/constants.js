@@ -1,13 +1,17 @@
-// export const LOGO_URL = "https://shorturl.at/bhiAS";
+import location from "../utils/images/location.png"
+import mail from "../utils/images/mail.png"
+import phone from "../utils/images/phone.png"
+
+
 export const LOGO_URL = "https://imgs.search.brave.com/zpRqb0pUUyWgLHsGsasDu95wQ33nrvqxTaAYdVSFc6g/rs:fit:860:0:0/g:ce/aHR0cHM6Ly93d3cu/ZnJlZXBuZ2xvZ29z/LmNvbS91cGxvYWRz/L2NoaWxpcy1wbmct/bG9nby9zeW1ib2wt/cmVkLWhvdC1jaGls/aS1wZXBwZXJzLWxv/Z28tcG5nLTI3LnBu/Zw";
 
 
 export const CDN_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"
 // https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/                        
-export const MENU_API = 
-// " https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.5961279&lng=77.1587375&restaurantId="
-// "https://prakashbhattcse.github.io/food_website_api/"
-"https://prakashbhattcse.github.io/food_website_api/"
+export const MENU_API =
+    // " https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.5961279&lng=77.1587375&restaurantId="
+    // "https://prakashbhattcse.github.io/food_website_api/"
+    "https://prakashbhattcse.github.io/food_website_api/"
 export const resObj = [
     {
         "info": {
@@ -790,3 +794,27 @@ export const colors = {
     textColor: 'text-white',
     buttonColor: 'bg-red-600',
 };
+
+
+export const contactData = [
+    {
+        id: 1,
+        icon: location,
+        title: 'We are Here',
+        phone: 'New Delhi, India',
+    },
+    {
+        id: 2,
+        icon: mail,
+        title: 'Mail Us',
+        phone: 'foodie@mail.com',
+    },
+    {
+        id: 3,
+        icon: phone,
+        title: 'Phone Us',
+        phone: '+91 51245672677',
+    },
+];
+
+

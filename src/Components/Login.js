@@ -2,8 +2,8 @@ import React, { useState, useRef } from "react";
 import Header from "./Header";
 import { checkValidData } from "../utils/validate";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, } from "firebase/auth";
-
-
+import "../Components/Body/Body.css"
+import curve from "../utils/images/curve.png"
 import { auth } from "../utils/firebase"
 
 import { addUser } from "../utils/userSlice";
@@ -14,8 +14,11 @@ const Login = () => {
 
     const [isLogin, setisLogin] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
+    // const [signingUp, setSigningUp] = useState(false);
+    const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
 
     // regesx auth
     const name = useRef(null);
@@ -44,6 +47,7 @@ const Login = () => {
             let action;
             if (!isLogin) {
                 // If signing up, create a new user with email and password
+                // setSigningUp(true);
                 action = createUserWithEmailAndPassword(
                     auth,
                     emailValue,
@@ -58,12 +62,16 @@ const Login = () => {
                         // Dispatch addUser action to add user data to Redux store
                         const { uid, displayName, email } = auth.currentUser;
                         dispatch(addUser({ uid: uid, displayName: displayName, email: email }));
-                        navigate("/");
+
+                        navigate("/home");
+
                     });
                 });
             } else {
                 // If logging in, sign in existing user with email and password
-                action = signInWithEmailAndPassword(auth, emailValue, passwordValue);
+                action = signInWithEmailAndPassword(auth, emailValue, passwordValue)
+                navigate("/home")
+
             }
 
             action.catch((error) => {
@@ -72,21 +80,25 @@ const Login = () => {
                 const errorMessage = error.message;
                 setErrorMessage(errorCode + "-" + errorMessage);
             });
-            
+
         }
     };
 
 
     return (
-        <div className="relative min-h-screen flex flex-col bg-gray-900">
+        <div className="relative min-h-screen flex flex-col bg-background">
 
+            <img src={curve} alt="" className='overlay-login' />
+            
+            <div className='before-leavesbg'></div>
+            <div className='before-bg2'></div>
             {/* form */}
-            <div className="mt-20 relative z-10 flex items-center justify-center m-auto bg-gray-800 max-w-2/3">
+            <div className="mt-20 relative z-10 flex items-center justify-center m-auto bg-bg-secondary max-w-2/3">
                 <form
                     onSubmit={(e) => e.preventDefault()}
                     className="flex flex-col gap-9 text-gray-300 py-10 w-full mx-12"
                 >
-                    <h1 className="text-4xl text-white">
+                    <h1 className="text-4xl text-white font-serif">
                         {isLogin ? "Sign In" : "Sign Up"}
                     </h1>
                     <div className="flex gap-4 flex-col w-80">
@@ -115,7 +127,7 @@ const Login = () => {
 
                     <p className="text-red-500 font-bold text-lg py-2">{errorMessage}</p>
                     <button
-                        className="bg-red-600 text-white p-3 rounded-md"
+                        className="bg-red text-white p-3 rounded-md"
                         onClick={handleButtonClick}
                     >
                         {isLogin ? "Sign In" : "Sign Up"}
@@ -129,7 +141,7 @@ const Login = () => {
                         <p>Need help?</p>
                     </div>
                     <p>
-                        {isLogin ? " New to Netflix? " : "Already Registered ? "}
+                        {isLogin ? " New ? " : "Already Registered ? "}
                         <span className="text-white cursor-pointer" onClick={handleLogin}>
                             {isLogin ? "Sign up now." : "Sign In."}
                         </span>

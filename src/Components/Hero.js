@@ -39,15 +39,15 @@ const Hero = () => {
 
     return (
         <div className="relative">
-        <img src={curve} alt="" className='overlay' />
+            <img src={curve} alt="" className='overlay' />
             <div className="absolute inset-x-0 top-[-30px] bg-gradient-to-b from-black to-transparent h-[100px] opacity-50">
-           
+
             </div>
-            <div className="flex w-[90%] m-auto mt-7 flex-col">
+            <div className="flex w-[90%] m-auto mt-8 flex-col">
 
                 {/* BANNER SECTION */}
-                <h1 className='font-bold text-xl text-red-600'>Banners</h1>
-                <div className="flex flex-row gap-2 mt-5 mb-9">
+                {/* <h1 className='font-bold text-xl text-red-600'>Banners</h1> */}
+                <div className="flex flex-row gap-2 mt-9 mb-9">
 
                     {banner?.map((item, i) =>
                         <div key={i} className={`flex flex-col ${i >= bannerActiveIndex && i < bannerActiveIndex + 4 ? 'block' : 'hidden'}`}>
