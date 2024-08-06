@@ -96,25 +96,6 @@ const Header = () => {
 
 
                     <ul className='flex list-none gap-5'>
-                        {/* USE CONTEXT */}
-                        {/* <li className='mr-4 text-lg font-semibold'>{loggedInUser}</li> */}
-                        {/* <li className='mr-4 text-lg font-semibold'>
-                      <Link className='text-white no-underline hover:text-red-500' to="/reactlifecycle">Cycle</Link>
-                    </li> */}
-
-                        {/* <li className='mr-4 text-lg font-semibold'>
-                            {onlineStatus ? "🟢" : "🔴"}
-                        </li>
-                        <li className='mr-4 text-lg font-semibold'>
-                            <Link className={`no-underline hover:${colors.buttonColor}`} to="/">Home</Link>
-                        </li>
-                        <li className='mr-4 text-lg font-semibold'>
-                            <Link className={`no-underline hover:${colors.buttonColor}`} to="/About">About Us</Link>
-                        </li>
-                        <li className='mr-4 text-lg font-semibold'>
-                            <Link className={`no-underline hover:${colors.buttonColor}`} to="/Contact">Contact</Link>
-                        </li> */}
-                      
                         <li className='mr-4 text-lg font-semibold'>
 
                             {/* <Link className={`no-underline hover:${colors.buttonColor}`} to="/cart">🛒- ({totalQuantity})</Link> */}
