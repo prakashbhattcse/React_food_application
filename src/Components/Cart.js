@@ -15,11 +15,6 @@ const Cart = () => {
 
     const findTotal = () => {
         let totalSum = 0
-        // cartItems.map((el) => {
-        //     return (
-        //         totalSum += el.card.info.price ? el.card.info.price / 100 : el.card.info.defaultPrice / 100
-        //     )
-        // })
 
         cartItems.forEach((item) => {
             totalSum += (item.card.info.price ? item.card.info.price / 100 : item.card.info.defaultPrice / 100) * item.quantity;
